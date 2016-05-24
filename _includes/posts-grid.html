@@ -1,0 +1,76 @@
+{% if page.posts-filter %}
+  {% if 'tag' == page.posts-filter.type %}
+    {% assign site-posts = "" | split:"|" %}
+    {% for item in site.posts %}
+      {% if item.tags contains page.posts-filter.value %}
+        {% assign site-posts = site-posts | push: item %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% assign site-posts = site.posts | where:page.posts-filter.type,page.posts-filter.value %}
+  {% endif %}
+{% else %}
+  {% assign site-posts = site.posts %}
+{% endif %}
+
+<div class="posts-grid push-0 center">
+
+  {% if 'category' == page.posts-filter.type %}
+    <div class="post-grid-item post-grid-sizer pad-t gutter-1-2 text-center">
+      <div class="posts-filter island-1-2">
+        <h4 class="brand-highlight push-0 giga">{{page.title}}</h4>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if 'tag' == page.posts-filter.type %}
+    <div class="post-grid-item post-grid-sizer pad-t gutter-1-2 text-center">
+      <div class="posts-filter island-1-2">
+        <h4 class="brand-highlight push-0 giga">{{page.title}}</h4>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if 'author' == page.posts-filter.type %}
+    <div class="post-grid-item post-grid-sizer pad-t gutter-1-2 text-center">
+      <div class="posts-filter island-1-2">
+        <div class="avatar center">
+          <img class="img-flex" src="{{site.baseurl}}/assets/img/authors/{{page.image}}" alt="Profile picture">
+        </div>
+        <h4 class="brand-highlight push-0 giga">{{page.author}}</h4>
+        <div class="p-container milli">{{ page.content | strip_html }}</div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% for post in site-posts %}
+    <div class="post-grid-item {% if forloop.first %}post-grid-sizer{% endif %} pad-t gutter-1-2 text-left">
+      <article>
+        {% if post.cover and post.cover.include %}
+            {% assign image = post.cover %}
+          {% else %}
+            {% if post.cover-carousel and post.cover-carousel.include %}
+              {% assign slides = post.cover-carousel.content | sort:"order" %}
+              {% assign image = slides | first %}
+            {% endif %}
+          {% endif %}
+        {% if image %}
+          <a href="{{site.baseurl}}{{post.url}}" title="{{post.title}}">
+            {% include image.html %}
+          </a>
+        {% endif %}
+        <h5 class="brand-highlight header-link push-0 mega"><a href="{{site.baseurl}}{{post.url}}" title="{{post.title}}">{{post.title}}</a></h5>
+        <div class="post-date micro">
+          <em><time itemprop="datePublished" datetime="{{post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %d, %Y" }}</time></em>
+        </div>
+        {% if post.summary %}
+          <div class="post-summary milli">{{post.summary | truncatewords: 25 }} <a href="{{site.baseurl}}{{post.url}}">»</a></div>
+        {% endif %}
+        {% capture post-category-slug %}/{{ post.category | slugify }}/{% endcapture %}
+        {% assign category-page = site.pages | where:"url",post-category-slug | first %}
+        <div class="post-category milli"><a href="{{site.baseurl}}{{category-page.url}}">{{category-page.title}}</a></div>
+      </article>
+    </div>
+  {% endfor %}
+</div>
+

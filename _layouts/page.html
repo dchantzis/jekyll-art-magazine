@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<section class="{{page.sectionClass}} pad-t">
+
+  <div class="gutter">
+    <h1 class="page-title brand-highlight push zetta">{{ page.title | capitalize }}</h1>
+  </div>
+  {% include carousel.html %}
+
+  {% if page.cover and page.cover.include %}
+    {% assign image = page.cover %}
+    {% include image.html %}
+  {% endif %}
+
+  <div class="page-content push-0 mega p-container island-2">
+
+    {% if page.summary %}
+      <p>{{ page.summary }}</p>
+    {% endif %}
+
+    {% if page.images.size >= 1 %}
+      {% for image in page.images %}
+        {% include image.html %}
+      {% endfor %}
+    {% endif %}
+
+    {{ content | markdownify }}
+
+  </div>
+
+</section>

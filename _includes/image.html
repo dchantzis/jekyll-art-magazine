@@ -1,0 +1,11 @@
+<figure class="graphic">
+  <div class="embed">
+    <img class="embed-item flex-img" src="{{ image.fullsize-src }}" alt="{{ image.title }}">
+  </div>
+  {% if image.title and image.description %}
+  <figcaption class="pad-t-1-2 kilo">
+    <h3 class="push-0 kilo brand-highlight brand-red">{{ image.title | strip | capitalize }}</h3>
+    <div class="push-0 p-container">{{ image.description }}</div>
+  </figcaption>
+  {% endif %}
+</figure>

@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+<section class="{{page.sectionClass}} pad-t">
+
+  <article itemscope itemtype="http://schema.org/BlogPosting">
+
+    {% include post-meta-tags.html %}
+
+    <div class="gutter">
+      <h1 class="page-title brand-highlight push-0 zetta">{{ page.title | capitalize }}</h1>
+      <p class="page-tidbits milli push-0">
+        By
+        {% for item in page.author %}
+          {% assign author-info = site.authors | where:"title",item %}
+          {% assign author-info = author-info | first %}
+          <a href="{{site.baseurl}}{{author-info.url}}">{{author-info.author}}</a>
+          {% if forloop.last == false %}, {% endif %}
+        {% endfor %}
+        on <time itemprop="datePublished" datetime="{{page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %d, %Y" }}</time>
+
+        {% if page.tags.size >= 1 %}
+          / Tags:
+          {% for item in page.tags %}
+            {% capture post-tag-slug %}/tag/{{ item | slugify }}/{% endcapture %}
+            {% assign tag-info = site.tags | where:"url",post-tag-slug %}
+            {% assign tag-info = tag-info | first %}
+            <a href="{{site.baseurl}}{{tag-info.url}}">{{tag-info.title}}</a>
+            {% if forloop.last == false %}, {% endif %}
+          {% endfor %}
+        {% endif %}
+
+      </p>
+      {% assign post = page %}
+      {% include posts-time-to-read.html %}
+    </div>
+    {% include carousel.html %}
+
+    {% if page.cover and page.cover.include %}
+      {% assign image = page.cover %}
+      {% include image.html %}
+    {% endif %}
+
+    <div class="page-content push-0 mega p-container island-2">
+
+      {% if page.subtitle %}
+        <h2 class="page-title brand-highlight push exa">{{ page.subtitle }}</h2>
+      {% endif %}
+
+      {% if page.summary %}
+        <p>{{ page.summary }}</p>
+      {% endif %}
+
+      {% if page.images.size >= 1 %}
+        {% for image in page.images %}
+          {% include image.html %}
+        {% endfor %}
+      {% endif %}
+
+      {{ content | markdownify }}
+
+      <div class="social-share-buttons">
+        {% include social-share-buttons.html %}
+      </div>
+
+      {% include author.html %}
+
+    </div>
+
+    {% include related-posts.html %}
+
+    {% if true == site.disqus.comments and true == page.comments %}
+      <div class="pad-t-1-2 pad-b-1-2 gutter-2">
+        {% include disqus-comments.html %}
+      </div>
+    {% endif %}
+
+  </article>
+</section>

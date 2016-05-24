@@ -1,0 +1,22 @@
+<header class="masthead push-0 zindex-2">
+  <div class="header-btn push-0">
+    <label for="mobileNavToggle" class="mobile-nav-toggle-label">
+      <div class="top-bar"></div>
+      <div class="middle-bar"></div>
+      <div class="bottom-bar"></div>
+    </label>
+  </div>
+  <div class="header-content">
+    <div class="logo-wrapper header-link center text-center text-upper">
+    {% if '/' == page.url %}
+      <a href="{{site.baseurl}}/">
+        <h1 class="logo push-0">{{ site.title }}</h1>
+      </a>
+    {% else %}
+      <a href="{{site.baseurl}}/">
+        <h2 class="logo push-0">{{ site.title }}</h2>
+      </a>
+    {% endif %}
+    </div>
+  </div>
+</header>

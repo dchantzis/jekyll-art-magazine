@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<section class="{{page.sectionClass}} pad-t-2">
+
+  {% include carousel.html %}
+
+  {% if page.cover and page.cover.include %}
+    {% assign image = page.cover %}
+    {% include image.html %}
+  {% endif %}
+
+  <div class="page-content push-0 mega p-container gutter">
+    {% include posts-grid.html %}
+  </div>
+
+</section>

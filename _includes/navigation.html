@@ -1,0 +1,22 @@
+{% assign site-pages = site.pages | sort:"weight"  %}
+
+<nav class="navigation {{include.navSection}} {% if 'second' == include.navSection %}gutter{% endif %}">
+
+  <ul class="{% if 'second' == include.navSection %}list-group-inline{% else %}list-group{% endif %} push-0">
+
+    {% for item in site-pages %}
+      {% if item.navigationSection contains include.navSection %}
+          {% if item.url contains "page2" %}{% continue %}{% endif %}
+          {% if true == item.includeInNavigation %}
+            <li class="list-group__item">
+              <a class="micro {% if 'second' == include.navSection %}nav-item-second{% else %}nav-item-first{% endif %} {% if page.url == item.url %}current{% endif %}" href="{{site.baseurl}}{{item.url}}">
+                {{ item.title | capitalize }}
+              </a>
+            </li>
+          {% endif %}
+      {% endif %}
+    {% endfor %}
+
+  </ul>
+
+</nav>

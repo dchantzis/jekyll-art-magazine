@@ -1,0 +1,37 @@
+<div class="sidebar island">
+
+<div class="search-box milli pad-t">{% include forms/search-form.html %}</div>
+<ul class="list-group--inline push social-links">
+  {% for social in site.social %}
+    {% assign social.provider == social.provider | downcase %}
+    <li class="list-group__item mega">
+      {% case social.provider %}
+        {% when 'facebook' %}
+           <a class="icon-link" href="https://www.facebook.com/{{social.account-id}}" target="_blank" rel="external">
+            <i class="icon i-18 i-facebook-simple-white"></i>
+            <span class="icon-label hidden">facebook</span>
+           </a>
+        {% when 'instagram' %}
+           <a class="icon-link" href="https://www.instagram.com/{{social.account-id}}" target="_blank" rel="external">
+            <i class="icon i-18 i-instagram-white"></i>
+            <span class="icon-label hidden">instagram</span>
+          </a>
+        {% when 'twitter' %}
+           <a class="icon-link" href="https://twitter.com/{{social.account-id}}" target="_blank" rel="external">
+            <i class="icon i-24 i-twitter-white"></i>
+            <span class="icon-label hidden">twitter</span>
+          </a>
+        {% when 'pinterest' %}
+           <a class="icon-link" href="https://pinterest.com/{{social.account-id}}" target="_blank" rel="external">
+            <i class="icon i-18 i-pinterest-simple-white"></i>
+            <span class="icon-label hidden">pinterest</span>
+          </a>
+      {% endcase %}
+    </li>
+  {% endfor %}
+</ul>
+
+  {% include navigation.html navSection = "first" %}
+
+</div>
+

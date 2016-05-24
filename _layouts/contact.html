@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<section class="{{page.sectionClass}} pad-t">
+
+  <div class="gutter">
+    <h1 class="page-title brand-highlight push zetta">{{ page.title | capitalize }}</h1>
+  </div>
+  {% include carousel.html %}
+
+  {% if page.cover and page.cover.include %}
+    {% assign image = page.cover %}
+    {% include image.html %}
+  {% endif %}
+
+  <div class="page-content push-0 mega p-container island-2">
+
+    {% if page.summary %}
+      <p>{{ page.summary }}</p>
+    {% endif %}
+
+    {% if page.images.size >= 1 %}
+      {% for image in page.images %}
+        {% include image.html %}
+      {% endfor %}
+    {% endif %}
+
+    {{ content | markdownify }}
+
+    <div class="grid grid-top">
+      <div class="unit [ xs-1 s-1 l-2-5 ] gutter">
+        <div class="push text-left">
+        {% include forms/contact-form.html %}
+        </div>
+      </div>
+      <div class="unit [ xs-1 s-1 l-1-2 ] contact-map-container gutter">
+        <div class="push-0 micro p-container">
+          {% include contact-info.html %}
+        </div>
+        {% include google-maps.html %}
+      </div>
+    </div>
+
+  </div>
+
+</section>

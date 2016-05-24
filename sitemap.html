@@ -1,0 +1,45 @@
+---
+layout: page
+title: sitemap
+titleBefore:
+titleAfter:
+meta:
+summary:
+author:
+image:
+keywords:
+sectionClass:
+navigationSection: second
+includeInNavigation: true
+weight: 8
+sitemap:
+  lastMod: 2016-05-02
+  priority: 1
+  changeFreq: monthly
+  include: true
+---
+
+  {% if false %}
+    {% assign posts = site.posts | sort:"weight" %}
+    <h5 class="brand-highlight push-0 pad-b-1-2 pad-t-1-2">Posts</h5>
+    <ul class="list-group push-0 kilo">
+    {% for item in posts %}
+      {% if item.sitemap.include == false %}{% continue %}{% endif %}
+      {% unless item.published == false %}
+        <li class="list-group__item"><a href="{{site.baseurl}}{{item.url}}">{{item.title | capitalize}}</a></li>
+      {% endunless %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% assign pages = site.pages | sort:"weight" %}
+  <h5 class="brand-highlight push-0 pad-b-1-2 pad-t-1-2">Pages</h5>
+  <ul class="list-group push-0 kilo">
+  {% for item in pages %}
+    {% if item.layout %}
+      {% if item.sitemap.include == false %}{% continue %}{% endif %}
+      {% if item.url contains "page2" %}{% continue %}{% endif %}
+      <li class="list-group__item"><a href="{{site.baseurl}}{{item.url}}">{{item.title | capitalize}}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>

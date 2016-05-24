@@ -1,0 +1,15 @@
+<meta itemprop="description" content="{{ page.meta }}" />
+<meta itemprop="url" content="{{site.baseurl}}{{ page.url }}" />
+<meta itemprop="isFamilyFriendly" content="{{ page.isFamilyFriendly }}" />
+<meta itemprop="keywords" content="{% if page.keywords.size >= 1 %}{% for keyword in page.keywords %}{{keyword}}{% if false == forloop.last %}, {% endif %}{% endfor %}{% endif %}"/>
+<meta itemprop="thumbnailUrl" content="{{ page.image }}"/>
+<meta itemprop="wordCount" content="{{ page.content | number_of_words }}" />
+{% capture authors %}
+  {% for item in page.author %}
+    {% assign author-info = site.authors | where:"title",item %}
+    {% assign author-info = author-info | first %}
+      {{author-info.author}}
+      {% if forloop.last == false %}, {% endif %}
+  {% endfor %}
+{% endcapture %}
+<meta itemprop="creator" content="{{ authors | strip}}"/>

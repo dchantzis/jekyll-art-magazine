@@ -1,0 +1,32 @@
+{% if page.author.size >= 1 %}
+
+  {% for item in page.author %}
+    {% assign author-info = site.authors | where:"title",item %}
+    {% assign author-info = author-info | first %}
+    <div class="page-author island push">
+
+      <div class="grid grid-middle">
+        <div class="unit [ xs-1 m-1-4 l-1-6 ] pad-b-1-2">
+          <div class="avatar center">
+            <img class="img-flex" src="{{site.baseurl}}/assets/img/authors/{{author-info.image}}" alt="Profile picture">
+          </div>
+        </div>
+
+        <div class="unit [ xs-1 m-3-4 l-5-6 ]">
+          <div class="grid">
+            <div class="unit [ xs-1 ] push">
+              <h3 class="brand-highlight push-0">About {{author-info.author}}</h3>
+            </div>
+            <div class="unit [ xs-1 ] p-container kilo gutter">
+              {{ author-info.content | strip_html }}
+              <p class="push-0"><a href="{{site.baseurl}}{{author-info.url}}">Read all posts by {{author-info.author}} »</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  {% endfor %}
+
+{% endif %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+  <meta charset="utf-8">
+  <title>{% if page.titleBefore %}{{page.titleBefore}} · {% endif %}{% if page.title %}{{page.title | capitalize }} · {% endif %}{{site.title}}{% if page.titleAfter %} · {{page.titleAfter}}{% endif %}</title>
+
+  <meta name="handheldfriendly" content="true">
+  <meta name="mobileoptimized" content="240">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+  {% include meta-tags.html %}
+
+  <link href="{{site.baseurl}}/assets/css/main.css" rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,600,600italic' rel='stylesheet' type='text/css'>
+  <link href="{{site.baseurl}}favicon.ico" rel="shortcut icon">
+
+  <link rel="alternate" type="application/atom+xml" title="{{site.title}} | {{site.description}}" href="/atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="{{site.title}} | {{site.description}}" href="/feed.xml" />
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="brand">
+
+  {% include sidebar.html %}
+
+  <input type="checkbox" class="mobile-nav-toggle-box" name="mobile-nav-toggle" id="mobileNavToggle">
+  <div class="main-wrapper pad-t-2">
+
+    {% include header.html %}
+
+    <main class="main-content clearfix">
+      {{ content | strip }}
+    </main>
+
+    {% include footer.html %}
+
+  </div>
+
+  <script src="{{site.baseurl}}/assets/js/jquery-1.12.3.min.js"></script>
+  <script src="{{site.baseurl}}/assets/js/jquery.mobile.custom.min.js"></script>
+  <script src="{{site.baseurl}}/assets/js/jquery.scrollTo.min.js"></script>
+  <script src="{{site.baseurl}}/assets/js/jquery.waypoints.min.js"></script>
+  <script src="{{site.baseurl}}/assets/js/main.js"></script>
+  <script src="{{site.baseurl}}/assets/js/forms.js"></script>
+  <script src="{{site.baseurl}}/assets/js/carousel.js"></script>
+  <script src="{{site.baseurl}}/assets/js/social-media-share.js"></script>
+
+  {% if site.enableSiteSearch %}
+    <script src="{{site.baseurl}}/assets/js/search.js"></script>
+  {% endif %}
+
+  {% if page.url contains "contact" %}
+    <script src="{{site.baseurl}}/assets/js/map.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ site.google-api-key }}&callback=initMap"></script>
+  {% endif %}
+  <script src="{{site.baseurl}}/assets/js/masonry.pkgd.min.js"></script>
+
+  {% if include-analytics-tracking %}
+    {% include analytics-tracking.html %}
+  {% endif %}
+
+</body>
+
+</html>

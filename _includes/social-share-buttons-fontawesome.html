@@ -1,0 +1,14 @@
+{% if site.display-social-media-share-buttons %}
+  <h6 class="push-0 brand-highlight inline-block milli">Share:</h6>
+  <ul class="push-0 list-group--inline inline-block social-btns">
+  {% for item in site.data.social-media-share-buttons %}
+      {% if false == item.display %}{% continue %}{% endif %}
+      <li class="list-group__item kilo">
+        <a href="{{item.sharer-prefix}}{{site.url}}{{page.url}}" class="social-btn social-btn-{{item.provider}}" data-type="{{item.provider}}" target="_blank">
+          <i class="fa fa-{{item.provider}}" aria-hidden="true"></i>
+          <span class="hidden">{{item.provider}}</span>
+        </a>
+      </li>
+  {% endfor %}
+  </ul>
+{% endif %}

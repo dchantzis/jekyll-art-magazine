@@ -1,0 +1,58 @@
+markdown: kramdown
+baseurl: /jekyll-art-magazine
+url: http://dchantzis.github.io/jekyll-art-magazine
+title: Magazine title
+description: Website description
+author: John Smith
+e-mail: magazine.title@email.you
+exclude: ['README.md', '.gitignore']
+permalink: pretty
+social:
+  - provider: facebook
+    account-id:
+  - provider: instagram
+    account-id:
+  - provider: twitter
+    account-id:
+  - provider: pinterest
+    account-id:
+include-analytics-tracking: false
+google-api-key:
+analytics :
+  provider : google
+  google :
+    tracking_id : ''
+google-maps:
+  latitude: 50.8373993
+  longitude: -0.1764011
+  zoom: 8
+collections:
+  authors:
+    output: true
+    permalink: /author/:path/
+  tags:
+    output: true
+    permalink: /tag/:path/
+gems: [
+    jekyll/tagging,
+    jekyll-tagging-related_posts
+  ]
+disqus:
+  comments: true
+  url: demodchantzis.disqus.com
+instagram-feed: true
+display-social-media-share-buttons: true
+contact-info:
+  name: Name
+  job-title: Job title
+  e-mail: your.email@email.you
+  phone: +44 (0) 040021130
+  website-url: http://www.website.com
+  address:
+      street: Street
+      locality: City
+      region: Region
+      country: Country
+      postal-code: Postal Code
+enableSiteSearch: true
+enablePostsTimeToRead: true
