@@ -1,6 +1,8 @@
 # README
 
-### Jekyll theme specifically created for portfolio websites, utilizing Jekyll collections for authors and tags.
+## **"Art Magazine"** | Responsive Multi-Purpose Jekyll Theme
+
+### Jekyll theme specifically created for art/photography magazines, utilizing Jekyll collections for authors and tags.
 **Built: Early 2016**
 
 **Demo Website URL:** [dchantzis.github.io/jekyll-art-magazine/](http://dchantzis.github.io/jekyll-art-magazine/)
@@ -29,7 +31,7 @@ This theme includes the following:
 - Disqus comments
 - Separate sitemap page
 - Word counter and "reading time" functionality for posts
-- JSON & AJAX driven predictive search functionality with search results page for albums, pages, images and posts
+- JSON & AJAX driven predictive search functionality with search results page for pages and posts
 
 
 ### Technologies and tools used:
