@@ -55,7 +55,7 @@ body {
 
 .page-content em,
 .p-container em {
-  color: rgba(192, 192, 192, 1);
+  color: rgba(117, 115, 115, 1);
 }
 
 .page-content p,
@@ -65,7 +65,7 @@ body {
 }
 
 .page-tidbits {
-  color: rgba(192, 192, 192, 1);
+  color: rgba(117, 115, 115, 1);
 }
 
 .main-wrapper {
