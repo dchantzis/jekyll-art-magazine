@@ -4,7 +4,7 @@ $(window).load(function(){
 
   if ( $form.html() != undefined) {
 
-    var jsonFile = '/assets/json/search-data.json';
+    var jsonFile = '/jekyll-art-magazine/assets/json/search-data.json';
     window.searchContent = $.getJSON(jsonFile);
 
     $('.btn-close-search').on('click', function(){
